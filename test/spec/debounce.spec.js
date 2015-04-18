@@ -21,11 +21,9 @@ define(
             it('should execute after a delay', function () {
                 jasmine.clock().install();
                 var happened = false;
-                var timestamp = new Date();
                 jasmine.clock().mockDate();
                 var debounced = debounce(function () {
                     happened = true;
-                    expect(happened).toBe(true);
                 }, 100);
                 debounced();
                 expect(happened).toBe(false);

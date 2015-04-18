@@ -4,9 +4,9 @@
  */
 
 
-// 函数在指定间隔内只执行一次
-// 如果在一个时间间隔内，又触发了一次函数请求，则重新计时，直至超时。
-// 如果指定了immediate，则在计时开始之前，立即执行一次函数，然后开始计时，等待下一次函数请求。
+// 函数在一个指定间隔之后只执行一次。
+// 如果在一个指定间隔超时之前，又来了一个函数请求，则重新计时。
+// 如果指定了immediate，则会在计时开始前就执行一次
 
 define(
     function (require) {
@@ -19,7 +19,8 @@ define(
             var later = function () {
                 var remaining = wait - (new Date() - timestamp);
 
-                if (remaining >= 0) {
+                // 重新计时
+                if (remaining > 0) {
                     timeout = setTimeout(later, remaining);
                 }
                 else {

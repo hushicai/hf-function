@@ -3,6 +3,11 @@
  * @author hushicai(bluthcy@gmail.com)
  */
 
+
+// 函数在指定间隔内只执行一次
+// 如果在一个时间间隔内，又触发了一次函数请求，则重新计时，直至超时。
+// 如果指定了immediate，则在计时开始之前，立即执行一次函数，然后开始计时，等待下一次函数请求。
+
 define(
     function (require) {
         function debounce(fn, wait, immediate) {

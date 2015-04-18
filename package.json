@@ -1,0 +1,32 @@
+{
+  "name": "hf-function",
+  "version": "1.0.0",
+  "description": "enhance function",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hushicai/hf-function.git"
+  },
+  "author": "hushicai <bluthcy@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hushicai/hf-function/issues"
+  },
+  "homepage": "https://github.com/hushicai/hf-function",
+  "devDependencies": {
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-coverage": "^0.3.1",
+    "karma-jasmine": "^0.3.5",
+    "karma-mocha-reporter": "^1.0.2",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-requirejs": "^0.2.2",
+    "requirejs": "^2.1.17"
+  }
+}

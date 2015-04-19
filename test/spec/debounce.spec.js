@@ -7,7 +7,7 @@ define(
     function (require) {
         var debounce = require('debounce');
 
-        describe('debounce test suite', function () {
+        describe('debounce', function () {
             beforeEach(function () {
                 jasmine.clock().install();
                 jasmine.clock().mockDate();
@@ -33,6 +33,18 @@ define(
                 debounced();
                 expect(happened).toBe(false);
                 jasmine.clock().tick(200);
+                expect(happened).toBe(true);
+            });
+
+            it('should happen immediately', function () {
+                var happened = false;
+                var debounced = debounce(function (val) {
+                    happened = true;
+                    expect(val).toBe(1);
+                }, 100, true);
+                debounced(1);
+                debounced(2);
+                debounced(3);
                 expect(happened).toBe(true);
             });
 
@@ -62,15 +74,6 @@ define(
                 debounced(3);
                 jasmine.clock().tick(101);
                 expect(count).toBe(1);
-            });
-
-            it('should happen immediately', function () {
-                var happened = false;
-                var debounced = debounce(function () {
-                    happened = true;
-                }, 100, true);
-                debounced();
-                expect(happened).toBe(true);
             });
 
             it('can debounce different functions', function () {

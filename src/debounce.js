@@ -4,13 +4,9 @@
  */
 
 
-// 函数在一个指定间隔之后只执行一次。
-// 如果在一个指定间隔超时之前，又来了一个函数请求，则重新计时。
-// 如果指定了immediate，则会在计时开始前就执行一次
-
 define(
     function (require) {
-        function debounce(fn, wait, immediate) {
+        function debounce(fn, wait, leading) {
             var context;
             var args;
             var timeout;
@@ -25,8 +21,11 @@ define(
                 }
                 else {
                     timeout = null;
-                    fn.apply(context, args);
-                    context = args = null;
+                    // 不重复执行
+                    if (!leading) {
+                        fn.apply(context, args);
+                        context = args = null;
+                    }
                 }
             };
 
@@ -35,14 +34,15 @@ define(
                 args = arguments;
                 timestamp = new Date();
 
+                var isCallNow = leading && !timeout;
+
                 if (!timeout) {
                     timeout = setTimeout(later, wait);
                 }
 
-                if (immediate) {
+                if (isCallNow) {
                     fn.apply(context, args);
                     context = args = null;
-                    immediate = undefined;
                 }
             };
         }

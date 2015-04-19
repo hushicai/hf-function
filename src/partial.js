@@ -12,7 +12,9 @@ define(
                 var innerLen =  arguments.length;
                 var arg = 0;
                 for (var i = 0; i < len && arg < innerLen; i++) {
-                    args[i] = arguments[arg++];
+                    if (args[i] === undefined) {
+                        args[i] = arguments[arg++];
+                    }
                 }
 
                 return fn.apply(this, args);

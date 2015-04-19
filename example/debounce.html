@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>debounce</title>
+</head>
+<body>
+    <input type="text" id="test">
+    <script src="http://apps.bdimg.com/libs/require.js/2.1.9/require.js"></script>
+    <script>
+        require.config({
+            baseUrl: '../src'
+        });
+        require(['debounce'], function (debounce) {
+            var handler = function (e) {
+                var value = e.target.value;
+                console.log(value);
+            };
+            var debounced = debounce(handler, 300);
+            var input = document.getElementById('test');
+            input.addEventListener('keydown', debounced, false);
+        });
+    </script>
+</body>
+</html>

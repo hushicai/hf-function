@@ -5,6 +5,7 @@
   "authors": [
     "hushicai <bluthcy@gmail.com>"
   ],
+  "main": "index.js",
   "license": "MIT",
   "ignore": [
     "**/.*",

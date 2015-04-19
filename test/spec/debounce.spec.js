@@ -32,7 +32,7 @@ define(
                 }, 100);
                 debounced();
                 expect(happened).toBe(false);
-                jasmine.clock().tick(200);
+                jasmine.clock().tick(101);
                 expect(happened).toBe(true);
             });
 
